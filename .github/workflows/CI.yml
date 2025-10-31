@@ -49,7 +49,7 @@ jobs:
             cp src/Backend/OrderService/build/libs/ordering* deploy/docker/Order/drop #copiar el resultado del build para la nueva imagen 
             docker build -t p2gps/order deploy/docker/Order 
              
-      ### SUBIR IMAGENES A DOCKERHUB ##### 
+       ### SUBIR IMAGENES A DOCKERHUB ##### 
       - name: Login to DockerHub 
         uses: docker/login-action@v3  
         with: 
@@ -57,8 +57,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}  
       - name: Etiquetar con formato DockerHub 
         run: | 
-          docker tag p2gps/web albet16/p2gps:web 
-          docker tag p2gps/order albet16/p2gps:order 
+          docker tag p2gps/web ${{ secrets.DOCKERHUB_USERNAME }}/p2gps:web 
+          docker tag p2gps/order ${{ secrets.DOCKERHUB_USERNAME }}/p2gps:order 
       - name: Push a DockerHub 
         run: | 
             docker push albet16/p2gps:order 
