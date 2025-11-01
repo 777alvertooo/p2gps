@@ -40,8 +40,7 @@ jobs:
         working-directory: src/Backend/OrderService 
         run: ./gradlew build test
 
-
-        #... 
+         #... 
       - name: dockerizar el front y el backend 
         run: |  
             cp src/Clients/build/libs/*.war deploy/docker/Clients/drop #copiar el resultado del build para la nueva imagen 
@@ -49,7 +48,7 @@ jobs:
             cp src/Backend/OrderService/build/libs/ordering* deploy/docker/Order/drop #copiar el resultado del build para la nueva imagen 
             docker build -t p2gps/order deploy/docker/Order 
              
-       ### SUBIR IMAGENES A DOCKERHUB ##### 
+      ### SUBIR IMAGENES A DOCKERHUB ##### 
       - name: Login to DockerHub 
         uses: docker/login-action@v3  
         with: 
@@ -62,4 +61,4 @@ jobs:
       - name: Push a DockerHub 
         run: | 
             docker push albet16/p2gps:order 
-            docker push albet16/p2gps:web 
+            docker push albet16/p2gps:web
