@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while ! curl http://localhost:27017/
+while ! curl http://localhost:28017/
 do
   echo "$(date) - still trying"
   sleep 1
